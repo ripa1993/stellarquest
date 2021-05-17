@@ -20,12 +20,12 @@ func main() {
 	}
 
 	md := txnbuild.SetOptions{
-		Signer:               &txnbuild.Signer{
+		Signer: &txnbuild.Signer{
 			Address: otherKp.Address(),
 			Weight:  1,
 		},
 		MediumThreshold: txnbuild.NewThreshold(txnbuild.Threshold(2)),
-		SourceAccount:        kp.Address(),
+		SourceAccount:   kp.Address(),
 	}
 
 	tx, err := txnbuild.NewTransaction(
@@ -60,7 +60,6 @@ func main() {
 	}
 
 	log.Println(res)
-
 
 	/////
 
@@ -103,4 +102,3 @@ func main() {
 
 	log.Println(res2)
 }
-

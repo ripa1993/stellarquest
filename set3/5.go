@@ -30,26 +30,26 @@ func main() {
 	}
 
 	changeTrust := txnbuild.ChangeTrust{
-		Line:   asset,
-		Limit: "1000",
+		Line:          asset,
+		Limit:         "1000",
 		SourceAccount: kp2.Address(),
 	}
 
 	setOptions := txnbuild.SetOptions{
-		SetFlags:             []txnbuild.AccountFlag{txnbuild.AuthClawbackEnabled, txnbuild.AuthRevocable},
+		SetFlags:   []txnbuild.AccountFlag{txnbuild.AuthClawbackEnabled, txnbuild.AuthRevocable},
 		ClearFlags: []txnbuild.AccountFlag{txnbuild.AuthRequired},
 	}
 
 	payment := txnbuild.Payment{
-		Destination:   kp2.Address(),
-		Amount:        "1",
-		Asset:         asset,
+		Destination: kp2.Address(),
+		Amount:      "1",
+		Asset:       asset,
 	}
 
 	revoke := txnbuild.Clawback{
-		From:          kp2.Address(),
-		Amount:        "1",
-		Asset:         &asset,
+		From:   kp2.Address(),
+		Amount: "1",
+		Asset:  &asset,
 	}
 
 	tx, err := txnbuild.NewTransaction(
@@ -58,7 +58,7 @@ func main() {
 			IncrementSequenceNum: true,
 			Operations:           []txnbuild.Operation{&setOptions, &changeTrust, &payment, &revoke},
 			BaseFee:              txnbuild.MinBaseFee,
-			Timebounds: 		  txnbuild.NewInfiniteTimeout(),
+			Timebounds:           txnbuild.NewInfiniteTimeout(),
 		},
 	)
 	if err != nil {
@@ -85,6 +85,5 @@ func main() {
 	}
 
 	log.Println(res)
-
 
 }

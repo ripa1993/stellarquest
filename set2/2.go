@@ -40,7 +40,6 @@ func main() {
 		SourceAccount: newKey.Address(),
 	}
 
-
 	tx, err := txnbuild.NewTransaction(
 		txnbuild.TransactionParams{
 			SourceAccount:        &sourceAccount,
@@ -48,7 +47,7 @@ func main() {
 			Operations:           []txnbuild.Operation{&md2, &md3},
 			BaseFee:              txnbuild.MinBaseFee,
 			Timebounds:           txnbuild.NewTimeout(300),
-			Memo: 				  txnbuild.MemoHash(sha256.Sum256([]byte("Stellar Quest Series 2"))),
+			Memo:                 txnbuild.MemoHash(sha256.Sum256([]byte("Stellar Quest Series 2"))),
 		},
 	)
 	if err != nil {

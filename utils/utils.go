@@ -5,7 +5,7 @@ import (
 	"github.com/stellar/go/clients/horizonclient"
 )
 
-func ExpandError(err error)  {
+func ExpandError(err error) {
 	if err2, ok := err.(*horizonclient.Error); ok {
 		fmt.Println("Error has additional info")
 		fmt.Println(err2.ResultCodes())

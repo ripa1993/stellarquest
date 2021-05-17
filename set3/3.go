@@ -30,7 +30,7 @@ func main() {
 	fmt.Println(kp.Address())
 
 	md := txnbuild.SetOptions{
-		Signer:               &txnbuild.Signer{
+		Signer: &txnbuild.Signer{
 			Address: hashx,
 			Weight:  txnbuild.Threshold(1),
 		},
@@ -42,7 +42,7 @@ func main() {
 			IncrementSequenceNum: true,
 			Operations:           []txnbuild.Operation{&md},
 			BaseFee:              txnbuild.MinBaseFee,
-			Timebounds: 		  txnbuild.NewInfiniteTimeout(),
+			Timebounds:           txnbuild.NewInfiniteTimeout(),
 		},
 	)
 	if err != nil {
@@ -73,7 +73,7 @@ func main() {
 	///
 
 	md2 := txnbuild.SetOptions{
-		Signer:               &txnbuild.Signer{
+		Signer: &txnbuild.Signer{
 			Address: hashx,
 			Weight:  0,
 		},
@@ -85,7 +85,7 @@ func main() {
 			IncrementSequenceNum: true,
 			Operations:           []txnbuild.Operation{&md2},
 			BaseFee:              txnbuild.MinBaseFee,
-			Timebounds: 		  txnbuild.NewInfiniteTimeout(),
+			Timebounds:           txnbuild.NewInfiniteTimeout(),
 		},
 	)
 	if err != nil {

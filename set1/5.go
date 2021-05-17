@@ -13,7 +13,6 @@ func main() {
 	kp, _ := keypair.Parse("SDDZZOXTWA3UK43F6EIAHH4VP3MUYPMYDWX3OAR5LQGX3KXOF4T5QS7W")
 	issuerKp, _ := keypair.Parse("SDZO6S6V64GO7AQKM2QRSXG32SWTCTMJ4SUTGZT4HAS4RXX2POSONNCN")
 
-
 	client := horizonclient.DefaultTestNetClient
 	ar := horizonclient.AccountRequest{AccountID: kp.Address()}
 	sourceAccount, err := client.AccountDetail(ar)
@@ -28,7 +27,7 @@ func main() {
 	}
 
 	md := txnbuild.ChangeTrust{
-		Line: asset,
+		Line:  asset,
 		Limit: "1000",
 	}
 
@@ -72,7 +71,6 @@ func main() {
 
 	log.Println(res)
 
-
 	// send
 
 	ar2 := horizonclient.AccountRequest{AccountID: issuerKp.Address()}
@@ -82,11 +80,10 @@ func main() {
 	}
 	log.Println(sourceAccount2.AccountID)
 
-
 	md2 := txnbuild.Payment{
-		Destination:   kp.Address(),
-		Amount:        "10",
-		Asset:         asset,
+		Destination: kp.Address(),
+		Amount:      "10",
+		Asset:       asset,
 	}
 
 	tx2, err := txnbuild.NewTransaction(
@@ -129,4 +126,3 @@ func main() {
 
 	log.Println(res2)
 }
-

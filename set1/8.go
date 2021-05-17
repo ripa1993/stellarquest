@@ -20,19 +20,19 @@ func main() {
 		log.Fatalln(err)
 	}
 	log.Println(sourceAccount.AccountID)
-	
+
 	asset := txnbuild.CreditAsset{
 		Code:   "SRT",
 		Issuer: issuerAddr,
 	}
 
 	md := txnbuild.PathPaymentStrictSend{
-		SendAsset:     txnbuild.NativeAsset{},
-		SendAmount:    "1",
-		Destination:   issuerAddr,
-		DestAsset:     asset,
-		DestMin:       "1",
-		Path:          nil,
+		SendAsset:   txnbuild.NativeAsset{},
+		SendAmount:  "1",
+		Destination: issuerAddr,
+		DestAsset:   asset,
+		DestMin:     "1",
+		Path:        nil,
 	}
 
 	tx, err := txnbuild.NewTransaction(
@@ -74,4 +74,3 @@ func main() {
 
 	log.Println(res)
 }
-

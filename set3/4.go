@@ -22,17 +22,16 @@ func main() {
 		log.Fatalln(err)
 	}
 
-
 	fmt.Println(kp.Address())
 
 	sn, _ := sourceAccount.GetSequenceNumber()
 
-	currentAccount := txnbuild.NewSimpleAccount(kp.Address(), sn + 1)
-	futureAccount := txnbuild.NewSimpleAccount(kp.Address(), sn + 2)
+	currentAccount := txnbuild.NewSimpleAccount(kp.Address(), sn+1)
+	futureAccount := txnbuild.NewSimpleAccount(kp.Address(), sn+2)
 
 	manageData := txnbuild.ManageData{
-		Name:          "Test",
-		Value:         []byte("test"),
+		Name:  "Test",
+		Value: []byte("test"),
 	}
 
 	txFuture, err := txnbuild.NewTransaction(
@@ -41,7 +40,7 @@ func main() {
 			IncrementSequenceNum: false,
 			Operations:           []txnbuild.Operation{&manageData},
 			BaseFee:              txnbuild.MinBaseFee,
-			Timebounds: 		  txnbuild.NewInfiniteTimeout(),
+			Timebounds:           txnbuild.NewInfiniteTimeout(),
 		},
 	)
 	if err != nil {
@@ -62,15 +61,12 @@ func main() {
 		log.Fatalln(err)
 	}
 
-
 	///
-
-
 
 	preAuth, err := strkey.Encode(strkey.VersionByteHashTx, txFutureHash[:])
 
 	setOptions := txnbuild.SetOptions{
-		Signer:               &txnbuild.Signer{
+		Signer: &txnbuild.Signer{
 			Address: preAuth,
 			Weight:  1,
 		},
@@ -82,7 +78,7 @@ func main() {
 			IncrementSequenceNum: false,
 			Operations:           []txnbuild.Operation{&setOptions},
 			BaseFee:              500,
-			Timebounds: 		  txnbuild.NewInfiniteTimeout(),
+			Timebounds:           txnbuild.NewInfiniteTimeout(),
 		},
 	)
 	if err != nil {
@@ -128,7 +124,5 @@ func main() {
 	}
 
 	log.Println(res)
-
-
 
 }

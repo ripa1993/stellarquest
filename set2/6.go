@@ -23,21 +23,18 @@ func main() {
 	}
 	log.Println(sourceAccount.AccountID)
 
-
 	md := txnbuild.BeginSponsoringFutureReserves{
-		SponsoredID:   newKp.Address(),
+		SponsoredID: newKp.Address(),
 	}
 
 	md2 := txnbuild.CreateAccount{
-		Destination:   newKp.Address(),
-		Amount:        "0",
+		Destination: newKp.Address(),
+		Amount:      "0",
 	}
 
 	md3 := txnbuild.EndSponsoringFutureReserves{
 		SourceAccount: newKp.Address(),
 	}
-
-
 
 	tx, err := txnbuild.NewTransaction(
 		txnbuild.TransactionParams{

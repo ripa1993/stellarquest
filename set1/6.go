@@ -13,7 +13,6 @@ func main() {
 	kp, _ := keypair.Parse("SDDZZOXTWA3UK43F6EIAHH4VP3MUYPMYDWX3OAR5LQGX3KXOF4T5QS7W")
 	issuerKp, _ := keypair.Parse("SDZO6S6V64GO7AQKM2QRSXG32SWTCTMJ4SUTGZT4HAS4RXX2POSONNCN")
 
-
 	client := horizonclient.DefaultTestNetClient
 	ar := horizonclient.AccountRequest{AccountID: kp.Address()}
 	sourceAccount, err := client.AccountDetail(ar)
@@ -28,11 +27,11 @@ func main() {
 	}
 
 	md := txnbuild.ManageSellOffer{
-		Selling:       asset,
-		Buying:        txnbuild.NativeAsset{},
-		Amount:        "10",
-		Price:         "1",
-		OfferID:       0,
+		Selling: asset,
+		Buying:  txnbuild.NativeAsset{},
+		Amount:  "10",
+		Price:   "1",
+		OfferID: 0,
 	}
 
 	tx, err := txnbuild.NewTransaction(
@@ -75,4 +74,3 @@ func main() {
 
 	log.Println(res)
 }
-

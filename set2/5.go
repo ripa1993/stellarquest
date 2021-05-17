@@ -21,7 +21,6 @@ func main() {
 	}
 	log.Println(sourceAccount.AccountID)
 
-
 	md := txnbuild.ClaimClaimableBalance{
 		BalanceID: "0000000055a88594744ce9355825244f1476dbd6af0e4780171e3b7653e473891d4d6b05",
 	}

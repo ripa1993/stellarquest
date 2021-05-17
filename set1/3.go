@@ -21,7 +21,6 @@ func main() {
 		log.Fatalln(err)
 	}
 
-
 	md := txnbuild.ManageData{
 		Name:          "Hello",
 		Value:         []byte("World"),
@@ -60,4 +59,3 @@ func main() {
 
 	log.Println(res)
 }
-

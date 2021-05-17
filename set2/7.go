@@ -23,7 +23,6 @@ func main() {
 	}
 	log.Println(sourceAccount.AccountID)
 
-
 	pay := txnbuild.Payment{
 		Destination:   other,
 		Amount:        "1000",
@@ -31,9 +30,9 @@ func main() {
 		SourceAccount: kp.Address(),
 	}
 	md := txnbuild.RevokeSponsorship{
-		SourceAccount:    kp.Address(),
-		Account:          &other,
-		SponsorshipType:  txnbuild.RevokeSponsorshipTypeAccount,
+		SourceAccount:   kp.Address(),
+		Account:         &other,
+		SponsorshipType: txnbuild.RevokeSponsorshipTypeAccount,
 	}
 
 	tx, err := txnbuild.NewTransaction(

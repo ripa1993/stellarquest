@@ -23,10 +23,10 @@ func main() {
 		log.Fatalln(err)
 	}
 	log.Println(sourceAccount.AccountID)
-	
+
 	md := txnbuild.CreateAccount{
-		Destination:   newKey.Address(),
-		Amount:        "5000",
+		Destination: newKey.Address(),
+		Amount:      "5000",
 	}
 
 	tx, err := txnbuild.NewTransaction(
@@ -36,7 +36,7 @@ func main() {
 			Operations:           []txnbuild.Operation{&md},
 			BaseFee:              txnbuild.MinBaseFee,
 			Timebounds:           txnbuild.NewTimeout(300),
-			Memo: 				  txnbuild.MemoHash(sha256.Sum256([]byte("Stellar Quest Series 2"))),
+			Memo:                 txnbuild.MemoHash(sha256.Sum256([]byte("Stellar Quest Series 2"))),
 		},
 	)
 	if err != nil {

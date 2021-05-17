@@ -19,7 +19,7 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	
+
 	md := txnbuild.CreateAccount{
 		Destination:   newKey.Address(),
 		Amount:        "1000",
@@ -58,4 +58,3 @@ func main() {
 
 	log.Println(res)
 }
-

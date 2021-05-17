@@ -23,18 +23,15 @@ func main() {
 
 	fmt.Println(kp.Address())
 
-
 	operations := make([]txnbuild.Operation, 0, 100)
 	i := 0
-	for i<100 {
+	for i < 100 {
 		operations = append(operations, &txnbuild.ManageData{
-			Name:          fmt.Sprintf("Test%d", i),
-			Value:         []byte("test"),
+			Name:  fmt.Sprintf("Test%d", i),
+			Value: []byte("test"),
 		})
 		i++
 	}
-
-
 
 	tx, err := txnbuild.NewTransaction(
 		txnbuild.TransactionParams{
@@ -42,7 +39,7 @@ func main() {
 			IncrementSequenceNum: true,
 			Operations:           operations,
 			BaseFee:              txnbuild.MinBaseFee,
-			Timebounds: 		  txnbuild.NewInfiniteTimeout(),
+			Timebounds:           txnbuild.NewInfiniteTimeout(),
 		},
 	)
 	if err != nil {

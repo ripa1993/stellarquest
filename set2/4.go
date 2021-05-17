@@ -36,9 +36,9 @@ func main() {
 	}
 
 	md := txnbuild.CreateClaimableBalance{
-		Amount:        "100",
-		Asset:         txnbuild.NativeAsset{},
-		Destinations:  []txnbuild.Claimant{
+		Amount: "100",
+		Asset:  txnbuild.NativeAsset{},
+		Destinations: []txnbuild.Claimant{
 			txnbuild.NewClaimant(kp.Address(), &notBefore10secs),
 		},
 		SourceAccount: kp.Address(),

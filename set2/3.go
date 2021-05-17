@@ -30,17 +30,16 @@ func main() {
 	}
 	log.Println(otherAccount.AccountID)
 
-
 	tx, err := txnbuild.NewTransaction(
 		txnbuild.TransactionParams{
 			SourceAccount:        &sourceAccount,
 			IncrementSequenceNum: true,
-			Operations:           []txnbuild.Operation{&txnbuild.ManageData{
-				Name:          "Test",
-				Value:         []byte("Test"),
+			Operations: []txnbuild.Operation{&txnbuild.ManageData{
+				Name:  "Test",
+				Value: []byte("Test"),
 			}},
-			BaseFee:              txnbuild.MinBaseFee,
-			Timebounds:           txnbuild.NewTimeout(300),
+			BaseFee:    txnbuild.MinBaseFee,
+			Timebounds: txnbuild.NewTimeout(300),
 		},
 	)
 	if err != nil {

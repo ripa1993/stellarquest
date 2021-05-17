@@ -25,9 +25,8 @@ func main() {
 	bumpTo := int64(110101115104111) // "nesho" as a buffer
 
 	md := txnbuild.BumpSequence{
-		BumpTo:        bumpTo,
+		BumpTo: bumpTo,
 	}
-
 
 	tx, err := txnbuild.NewTransaction(
 		txnbuild.TransactionParams{
@@ -35,7 +34,7 @@ func main() {
 			IncrementSequenceNum: true,
 			Operations:           []txnbuild.Operation{&md},
 			BaseFee:              txnbuild.MinBaseFee,
-			Timebounds: 		  txnbuild.NewInfiniteTimeout(),
+			Timebounds:           txnbuild.NewInfiniteTimeout(),
 		},
 	)
 	if err != nil {
@@ -64,7 +63,7 @@ func main() {
 	log.Println(res)
 }
 
-func expandError(err error)  {
+func expandError(err error) {
 	if err2, ok := err.(*horizonclient.Error); ok {
 		fmt.Println("Error has additional info")
 		fmt.Println(err2.ResultCodes())
